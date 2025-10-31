@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vista previa – Pixel Pulse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- INICIO DEL CÓDIGO -->
+<div class="video-bg">
+  <div class="video-iframe">
+    <video src="video/fondo de pag.mp4" autoplay muted loop playsinline preload="auto"></video>
+  </div>
+  <div class="video-overlay"></div>
+  <div class="content-overlay"></div>
+  </div>
+<div class="blog-videojuegos">
+<style>
+body{font-family:'Poppins',sans-serif}
+.blog-videojuegos *{box-sizing:border-box;margin:0;padding:0}
+.blog-videojuegos{
+  background:transparent;
+  color:#E6E6E9;
+  padding:28px;
+}
+ .blog-videojuegos{position:relative;z-index:2}
+
+
+/* Colores */
+:root{
+  --verde:#0B8457;
+  --azul:#0B66FF;
+  --rojo:#FF3B3B;
+  --amarillo:#FFD400;
+  --negro:#0B0B0B;
+  --verde-limon:#C7FF00;
+}
+
+.video-bg{position:fixed;inset:0;z-index:0;overflow:hidden}
+.video-iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:56.25vw;min-width:177.78vh;min-height:100vh}
+.video-iframe video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.video-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1;pointer-events:none}
+.content-overlay{position:fixed;inset:0;background:transparent;z-index:1;pointer-events:none}
+
+
+/* Encabezado */
+.blog-header{
+  text-align:center;
+  padding:1.25rem 0;
+  border-bottom:2px solid var(--verde-limon);
+  margin-bottom:20px;
+}
+.blog-header h1{color:var(--verde-limon);font-size:3rem;margin-bottom:.6rem;}
+.blog-header p{color:#aaa;font-size:1.05rem;}
+
+
+/* Sección equipo */
+.team{
+  margin:2.25rem auto;
+  text-align:center;
+}
+.team h2{color:var(--verde-limon);margin-bottom:1.1rem;font-size:3rem;}
+.team-grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:1.25rem;
+}
+.member{
+  background:#111;
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:10px;
+  width:320px;
+  padding:1.1rem;
+  text-align:center;
+}
+.member img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:.5rem;
+}
+.member h3{color:var(--verde-limon);margin-bottom:.3rem;font-size:1.15rem;}
+.member p{color:#aaa;font-size:1rem;}
+
+
+/* Sección entradas */
+.posts{
+  margin:2.25rem auto;
+  max-width:1200px;
+}
+.posts h2{text-align:center;color:var(--amarillo);margin-bottom:1.1rem;font-size:1.6rem;}
+.post{
+  background:linear-gradient(180deg,var(--negro),#111);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px;
+  margin-bottom:1.5rem;
+  padding:1.25rem;
+  display:flex;
+  flex-direction:column;
+}
+.post img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:.75rem;
+}
+.post h3{color:var(--verde-limon);margin-bottom:.55rem;font-size:1.25rem;}
+.post p{color:#ccc;font-size:1.05rem;margin-bottom:.6rem;}
+.posts .post:first-of-type p{ text-align: justify; }
+.post a{
+  display:inline-block;
+  color:var(--amarillo);
+  text-decoration:none;
+  font-weight:600;
+  margin-top:.5rem;
+  font-size:1.02rem;
+}
+
+
+/* Footer */
+.footer{
+  text-align:center;
+  color:#888;
+  margin-top:2rem;
+  border-top:1px solid rgba(255,255,255,0.1);
+  padding-top:1rem;
+  font-size:.9rem;
+}
+
+
+/* Responsive */
+@media(max-width:768px){
+  .team-grid{flex-direction:column;align-items:center;}
+  .member{width:92%;}
+}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.show{opacity:1;transform:none}
+
+.member,.post{transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease}
+.member:hover,.post:hover{transform:translateY(-6px);box-shadow:0 12px 24px rgba(0,0,0,.35);}
+
+.member img,.post img{transition:transform .35s ease}
+.member:hover img{transform:scale(1.03)}
+.member img{cursor:zoom-in}
+
+.post a{position:relative}
+.post a:after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--amarillo);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.post a:hover:after{transform:scaleX(1)}
+
+.blog-header h1{position:relative}
+.blog-header h1{animation:pulseGlow 2.8s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{text-shadow:0 0 0 rgba(199,255,0,0)}50%{text-shadow:0 0 16px rgba(199,255,0,.45)}}
+
+.tilt{
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.carousel{position:sticky;top:0;width:100%;margin:0;z-index:1}
+.news-head{display:flex;align-items:center;justify-content:center;gap:.6rem;margin:0}
+.carousel-viewport .news-head{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.badge{display:inline-block;background:var(--verde-limon);color:#0B0B0B;font-weight:600;border-radius:999px;padding:.22rem .6rem;font-size:.85rem}
+.carousel-title{text-align:center;color:var(--verde-limon);font-size:1.4rem;margin:.4rem 0 .4rem}
+.carousel-viewport{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.06);border-radius:10px;background:linear-gradient(180deg,var(--negro),#111)}
+.carousel-track{display:flex;transition:transform .45s ease}
+.carousel .slide{min-width:100%;padding:8px 8px 12px}
+.carousel .slide img{width:100%;height:320px;object-fit:cover;border-radius:10px}
+.carousel .slide h3{text-align:center;color:var(--verde-limon);margin-top:.6rem;font-size:1.25rem}
+.c-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);color:#fff;width:40px;height:40px;border-radius:999px;cursor:pointer;display:grid;place-items:center}
+.c-btn.prev{left:8px}
+.c-btn.next{right:8px}
+
+.carousel.hidden{opacity:0;pointer-events:none;transition:opacity .2s ease}
+
+
+
+.post-modal-content .pm-extra p{color:#fff;font-size:1.05rem;line-height:1.6;margin-top:.6rem}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+.img-modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:9999}
+.img-modal.open{opacity:1;pointer-events:auto}
+.img-modal img{max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.92);transition:transform .25s ease}
+.img-modal.open img{transform:scale(1)}
+
+.post-modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:9999}
+.post-modal.open{opacity:1;pointer-events:auto}
+.post-modal-box{background:#0f0f10;border:1px solid rgba(255,255,255,.08);border-radius:14px;box-shadow:0 24px 72px rgba(0,0,0,.6);max-width:860px;width:92vw;max-height:82vh;overflow:auto;transform:translateY(8px) scale(.98);transition:transform .25s ease;position:relative}
+.post-modal.open .post-modal-box{transform:translateY(0) scale(1)}
+.post-modal-content{padding:20px;color:#fff}
+.post-close{position:absolute;top:12px;right:16px;background:transparent;border:0;color:#E6E6E9;font-size:28px;line-height:1;cursor:pointer}
+
+/* Estilos de contenido dentro del modal de entradas */
+.post-modal-content h3{color:var(--verde-limon);font-size:1.8rem;margin-bottom:.6rem}
+.post-modal-content .pm-wrap>p:first-of-type{color:rgba(230,230,233,.8);font-size:1rem;margin-top:.4rem}
+.post-modal-content .pm-extra p{color:#fff;font-size:1.05rem;line-height:1.6;margin-top:.6rem}
+   .content-layout{display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start;margin-top:0}
+   @media (max-width: 900px){.content-layout{grid-template-columns:1fr}}
+   #top-juegos{grid-column:1}
+   .content-layout .posts{grid-column:2;margin:0;padding-top:0}
+ 
+ /* Comentarios estilo chat */
+ .comments-section{grid-column:2;background:#0f0f10;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;margin-top:12px}
+ .comments-section h2{color:var(--verde-limon);font-size:1.3rem;margin-bottom:.6rem}
+ .chat{list-style:none;display:flex;flex-direction:column;gap:10px;max-height:320px;overflow:auto;padding:2px}
+ .msg{display:flex;align-items:flex-end;gap:8px}
+ .msg .avatar{width:32px;height:32px;border-radius:50%;background:#1a1a1a;border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;color:#ddd;font-weight:600;font-size:.9rem}
+ .msg .bubble{max-width:78%;background:#151515;border:1px solid rgba(255,255,255,.08);padding:10px 12px;border-radius:14px;color:#eaeaea}
+ .msg .meta{display:block;font-size:.75rem;color:#aaa;margin-top:4px}
+ .msg.me{justify-content:flex-end}
+ .msg.me .avatar{order:2}
+ .msg.me .bubble{background:#0b3d2a;border-color:rgba(199,255,0,.25)}
+ .comment-form{display:flex;gap:8px;margin-top:10px}
+ .comment-form input[type="text"]{flex:1;min-width:0;background:#121212;border:1px solid rgba(255,255,255,.1);color:#e6e6e9;border-radius:10px;padding:10px 12px}
+ .comment-form button{background:var(--verde-limon);color:#0B0B0B;border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+ .comment-form .name{max-width:180px}
+ .comments-empty{color:#9aa; font-size:.95rem}
+  .content-layout{display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start;margin-top:0}
+   @media (max-width: 900px){.content-layout{grid-template-columns:1fr}}
+   #top-juegos{grid-column:1}
+   .content-layout .posts{grid-column:2;margin:0;padding-top:0}
+ 
+ /* Votos (like/dislike) */
+   .votes{display:flex;align-items:center;gap:10px;margin-top:8px}
+   .vote-btn{display:inline-flex;align-items:center;gap:6px;background:#111;border:1px solid rgba(255,255,255,.08);color:#e6e6e9;padding:6px 10px;border-radius:999px;cursor:pointer;user-select:none}
+   .vote-btn:hover{border-color:rgba(255,255,255,.18)}
+   .vote-btn .icon{font-size:1rem;line-height:1}
+   .vote-count{font-weight:700}
+   .vote-btn.active.like{background:#0b3d2a;border-color:rgba(199,255,0,.25)}
+   .vote-btn.active.dislike{background:#2a0b0b;border-color:rgba(255,59,59,.35)}
+  .content-layout{display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start;margin-top:0}
+   @media (max-width: 900px){.content-layout{grid-template-columns:1fr}}
+   #top-juegos{grid-column:1}
+   .content-layout .posts{grid-column:2;margin:0;padding-top:0}
+ 
+ </style>
+
+
+<!-- Contenido -->
+<div class="blog-header reveal">
+  <h1>Los Videojuegos</h1>
+  <p>¿Ocio sin sentido o herramienta de aprendizaje?</p>
+</div>
+
+
+<div class="content-layout">
+<section class="carousel" id="top-juegos">
+  <div class="carousel-viewport">
+    <div class="news-head">
+      <h2 class="carousel-title">¿Sabías que estos son los 10 juegos más jugados del mundo?</h2>
+    </div>
+    <div class="carousel-track">
+      <div class="slide"><img src="img/Clash royale.jpg" alt="Clash Royale"><h3>Clash Royale</h3></div>
+      <div class="slide"><img src="img/free fire.jpg" alt="Free Fire"><h3>Free fire</h3></div>
+      <div class="slide"><img src="img/call of duty.jpg" alt="Call of Duty"><h3>Call of duty</h3></div>
+      <div class="slide"><img src="img/fc 25.jpg" alt="FC 25"><h3>Fifa</h3></div>
+      <div class="slide"><img src="img/roblox.jpg" alt="Roblox"><h3>Roblox</h3></div>
+      <div class="slide"><img src="img/clash of clans.jpg" alt="Clash of clans"><h3>Clash of clans</h3></div>
+      <div class="slide"><img src="img/subway.jpg" alt="Subway Surfers"><h3>Subway surfeas</h3></div>
+      <div class="slide"><img src="img/dls 25.jpg" alt="DLS"><h3>DLS</h3></div>
+      <div class="slide"><img src="img/brawl stars.jpg" alt="Brawl stars"><h3>Brawl stars</h3></div>
+      <div class="slide"><img src="img/minecraft.jpg" alt="Minecraft"><h3>Minecraft</h3></div>
+    </div>
+    <button class="c-btn prev" aria-label="Anterior">‹</button>
+    <button class="c-btn next" aria-label="Siguiente">›</button>
+  </div>
+  
+  </section>
+
+  <!-- Entradas -->
+  <section class="posts" id="entradas">
+
+
+  <div class="post reveal">
+    <img src="img/lado oscuro .jpg" alt="Neon Drift">
+    <h3>El lado oscuro del juego</h3>
+    <p>¿Sabes qué secretos se esconden tras la aparente diversión de los videojuegos?</p>
+    <a href="#">Leer más →</a>
+    <div class="post-extra" hidden>
+      <p>En los años recientes, la percepción de los videojuegos ha cambiado significativamente, trascendiendo su anterior nicho subcultural para integrarse como un elemento cada vez más reconocido y relevante en la vida diaria. Si bien estos entornos digitales ofrecen entretenimiento, fomentan conexiones sociales y potencialmente fortalecen habilidades cognitivas, también presentan una faceta menos positiva. El juego puede volverse obsesivo, manifestando características que recuerdan a una adicción. La intensa necesidad de progresar en un nivel, dominar un territorio o finalizar una misión puede llegar a ser tan imperiosa que los jugadores ignoran responsabilidades cruciales del mundo real. Un estudio reciente de Ellithorpe, Meshi y Tham (2023), publicado en Psychology of Popular Media, investigó los riesgos para la salud asociados con lo que se denomina "juego problemático".</p>
+      <p>Los resultados de esta investigación indican que los individuos clasificados como "jugadores problemáticos" —aquellos que priorizan el juego de manera desmedida, sacrificando otras tareas cotidianas— son propensos a incurrir en lo que se conoce como "toma de decisiones miope". Este patrón implica privilegiar recompensas inmediatas sobre los beneficios de salud a largo plazo. Dicha conducta de corto plazo tiene un impacto negativo en al menos tres áreas fundamentales para el bienestar: la calidad del descanso, la calidad de la alimentación y la calidad del cuidado personal.</p>
+      <p>Respecto a la relación entre los videojuegos y el descanso, es ampliamente aceptado que un sueño adecuado es vital para una vida sana. Sin embargo, para los jugadores profundamente inmersos en sus mundos virtuales, la obtención de un descanso nocturno de calidad puede quedar relegada a un segundo plano. El estudio encontró una correlación entre el juego problemático y una disminución en la calidad del sueño. Esto podría atribuirse a varios factores concomitantes. Uno de ellos es la exposición prolongada a la luz azul emitida por las pantallas, que interfiere con los ritmos circadianos. Otro factor es el estado de excitación elevado que a menudo acompaña a las sesiones de juego intensas. Finalmente, la causa más directa es la elección consciente de recortar las horas de sueño para prolongar el tiempo dedicado a jugar, ilustrando claramente la prioridad que se le otorga a la actividad lúdica por encima de una necesidad biológica esencial. Este comportamiento de aplazamiento y sacrificio de necesidades básicas subraya la seriedad de la toma de decisiones miope en el contexto del juego excesivo, poniendo en peligro el equilibrio físico y mental de los jugadores a largo plazo. El hallazgo enfatiza cómo una actividad placentera puede, al volverse compulsiva, erosionar hábitos saludables fundamentales</p>
+      <p>Vitelli, R. (2023, 23 mayo). El lado oscuro de los videojuegos. Hábitos de juego prolongados pueden influir en sueño, dieta e higiene personal. <em>Psychology Today</em>.</p>
+    </div>
+  </div>
+
+
+  <div class="post reveal">
+    <img src="img/VIDEOJUEGOS ANTIGUOS.jpg" alt="Consolas Retro">
+    <h3>Historia de los videojuegos y su surgimiento</h3>
+    <p>Los videojuegos surgieron como un experimento tecnológico y se transforman en un fenómeno cultural global.</p>
+    <a href="#">Leer más →</a>
+    <div class="post-extra" hidden>
+      <p>Desde los primeros experimentos en el ámbito académico de los años setenta, los videojuegos han recorrido un camino impresionante que va más allá del mero entretenimiento. En sus comienzos, títulos como Pong (1972) surgieron como innovaciones técnicas y populares gracias a figuras como Alan Alcorn y Nolan Bushnell, fundadores de Atari. Aquel momento marcó el arranque de una industria que, en su inicio, operaba con recursos tecnológicos muy limitados. Educ.ar</p>
+      <p>Durante la década del ochenta, la industria experimentó una explosión de popularidad. Se consolidó lo que se conoce como “la era de oro” de las salas arcade y de las consolas domésticas, con la aparición de sistemas como la NES o la Atari 2600, y con personajes icónicos emergiendo de estudios como Nintendo como Mario o Donkey Kong. Al mismo tiempo, las microcomputadoras domésticas como la Commodore 64 o la Spectrum amplificaron el acceso de las familias a esta forma de ocio. Educ.ar+1</p>
+      <p>Hacia principios de los años noventa, la tecnología 3D irrumpió con fuerza. Juegos como Doom, Quake y otros del género “first-person shooter” ofrecieron nuevas sensaciones de inmersión, situando al jugador directamente en el mundo del juego. Este cambio marcó un antes y un después: tanto el software como el hardware evolucionaron rápidamente para satisfacer esa demanda de realismo. Educ.ar+1</p>
+      <p>El advenimiento de la conectividad global llevó los videojuegos al siguiente nivel. Gracias a internet, se popularizaron los modos multijugador, las comunidades, los clanes y los torneos en línea. Juegos que enfrentaban a humanos entre sí fomentaron una dimensión social que antes resultaba limitada. Educ.ar</p>
+      <p>Finalmente, el videojuego dejó de ser solo un pasatiempo para convertirse en una herramienta con múltiples facetas: es medio de comunicación, herramienta educativa, objeto artístico y más. En la actualidad, el desarrollo de un videojuego puede alcanzar el presupuesto y la escala de una producción cinematográfica, al mismo tiempo que existen propuestas independientes con pocos recursos que logran grandes innovaciones. Educ.ar</p>
+      <p>Educ.ar. (2015, 3 de septiembre). La historia de los videojuegos [Recurso web].</p>
+    </div>
+  </div>
+
+
+  <div class="post reveal">
+    <img src="img/el poder del entretenimiento.jpg" alt="Guía FPS 2025">
+    <h3>El poder del entretenimiento para crear consciencia social</h3>
+    <p>¿Puede un videojuego cambiar la forma en que vemos el mundo?</p>
+    <a href="#">Leer más →</a>
+    <div class="post-extra" hidden>
+      <p>En su columna titulada “¿Videojuegos sí o no? El poder del entretenimiento para crear consciencia social”, Teresa Cometto analiza cómo los videojuegos han dejado de ser vistos únicamente como un recurso lúdico para asumir el rol de instrumentos de concienciación social. Menciona como ejemplo el juego gratuito Johanna’s Vision, desarrollado para alertar a jóvenes sobre el peligro del fentanilo en EE. UU., que fue creado con el apoyo de fundaciones relacionadas con la pérdida personal y el sufrimiento humano. A través de este tipo de iniciativas, se evidencia que los videojuegos pueden incidir en conductas y decisiones de sus usuarios de forma significativa.</p>
+      <p>Cometto señala que, gracias a su gran accesibilidad y difusión, los videojuegos pueden alcanzar audiencias que otras herramientas educativas tradicionales difícilmente logran. Por otra parte, en el ámbito pedagógico se han identificado mejoras en el aprendizaje —por ejemplo en estudiantes de primaria— al incluir videojuegos interactivos en el aula, donde la participación activa y emocional del alumnado favorece tanto la retención de información como una experiencia emocional más positiva; esta implicación activa fomenta que el proceso educativo deje de ser pasivo.</p>
+      <p>Para que esta modalidad sea verdaderamente eficaz, la autora advierte que es necesaria una mediación consciente por parte de los docentes: el videojuego por sí solo no es suficiente; debe acompañarse a través de reflexión, discusión y contexto educativo que permitan transformar la experiencia de juego en una experiencia de aprendizaje crítico. Adicionalmente, los videojuegos permiten humanizar asuntos complejos a través de narrativas inmersivas, donde el jugador no solo observa, sino que vive decisiones dentro del mundo virtual, lo cual facilita la conexión emocional con historias que promueven la conciencia social.</p>
+      <p>Finalmente, Cometto concluye que los videojuegos representan un puente entre entretenimiento y educación social, pues abren la posibilidad de integrar ambos ámbitos en lugar de verlos como esferas separadas. En una época marcada por desafíos globales, estos medios pueden movilizar hacia la reflexión, informar y motivar acciones más saludables y responsables, aprovechando su popularidad para llegar allí donde otros mensajes quizás no alcanzan.</p>
+      <p>Cometto, T. (2024, 30 de agosto). ¿Videojuegos sí o no? El poder del entretenimiento para crear consciencia social. Montevideo.</p>
+    </div>
+  </div>
+  
+  <div class="post reveal">
+    <img src="img/el equilibrio.jpg" alt="Aprendizaje y Juegos">
+    <h3>Equilibrio digital: consejos para que los videojuegos y niños convivan de forma saludable</h3>
+    <p>¿Hay equilibrio entre los videojuegos y el aprendizaje?</p>
+    <a href="#">Leer más →</a>
+    <div class="post-extra" hidden>
+      <p>Mi hijo de 8 años llevaba tres horas jugando Minecraft, sí, tres horas seguidas, cuando de repente me gritó desde su cuarto: “¡Papá, ven a ver la ciudad que construí con mis amigos!” Y cuando fui a verla… había creado una réplica casi perfecta del centro de nuestra ciudad, con sus calles, sus edificios, incluso había puesto la fuente del parque donde vamos los fines de semana. Me la señaló con orgullo. Y yo, con la boca abierta y la vista borrosa de la emoción, no supe qué decir.</p>
+      <p>Ahí fue cuando entendí que tal vez (solo tal vez) había estado viendo todo esto desde el ángulo equivocado. Según el portal Padres Frikis (2025), los videojuegos, lejos de ser únicamente un entretenimiento pasivo, pueden convertirse en herramientas valiosas para el desarrollo de habilidades en los niños. El artículo explica que jugar puede mejorar la concentración, la coordinación, la creatividad y la capacidad para resolver problemas, siempre que se mantenga un equilibrio adecuado con otras actividades y responsabilidades.</p>
+      <p>El portal también advierte que el exceso de tiempo frente a la pantalla puede generar efectos negativos como irritabilidad, aislamiento social o problemas de sueño. Por ello, recomienda estrategias claras para los padres: establecer horarios de juego razonables, fomentar actividades fuera de la pantalla, aplicar reglas como la del “50/50” (una hora de juego por una hora de actividad offline) y, sobre todo, participar junto a los hijos en las partidas para comprender mejor su mundo digital.</p>
+      <p>Además, enfatiza que el equilibrio digital no se logra de inmediato, sino que requiere diálogo constante, observación y ajuste de reglas según la edad y necesidades de cada niño. Con un acompañamiento consciente, los videojuegos pueden dejar de ser vistos como un riesgo y pasar a ser aliados del aprendizaje, la creatividad y la interacción familiar, permitiendo que los niños disfruten y se desarrollen de manera saludable.</p>
+      <p>Padres Frikis. (2025, 1 de octubre). Equilibrio digital: consejos para que los videojuegos y niños convivan de forma saludable.</p>
+    </div>
+  </div>
+
+  <div class="post reveal">
+    <img src="img/el futuro gaming.jpg" alt="Industria del Gaming">
+    <h3>El futuro gaming</h3>
+    <p>¿Cómo será la interacción con los videojuegos en elfuturo?</p>
+    <a href="#">Leer más →</a>
+    <div class="post-extra" hidden>
+      <p>En el dinámico universo de los videojuegos, la inteligencia artificial (IA) está revolucionando la forma en que los jugadores interactúan con los juegos. Esta tecnología permite una personalización de la experiencia de juego, adaptando en tiempo real aspectos como la dificultad, el contenido y la narrativa según las acciones y preferencias del jugador.</p>
+      <p><strong>Adaptación dinámica de la dificultad:</strong> Los algoritmos de IA analizan el rendimiento del jugador, ajustando la dificultad del juego para mantener un desafío constante. Esto se logra observando variables como la frecuencia de muertes del personaje, la velocidad de progresión y la habilidad en tareas específicas, asegurando una experiencia equilibrada y motivadora.</p>
+      <p><strong>Personalización del contenido y la narrativa:</strong> La IA también permite que la historia del juego se modifique según las decisiones del jugador. Elementos como diálogos, consecuencias y desenlaces pueden cambiar, ofreciendo una experiencia única y emocionalmente resonante que aumenta la rejugabilidad del juego.</p>
+      <p><strong>Mejora de la IA de los personajes no jugadores (NPCs):</strong> Los NPCs ahora exhiben comportamientos más sofisticados y realistas, adaptándose a las estrategias del jugador y ofreciendo interacciones sociales más profundas. Esto enriquece la inmersión y la conexión emocional del jugador con el mundo del juego.</p>
+      <p><strong>Desafíos y consideraciones éticas:</strong> A pesar de los avances, surgen preocupaciones sobre la privacidad y seguridad de los datos recopilados por los juegos. Además, es esencial equilibrar la automatización con la creatividad, para evitar que la IA limite la innovación y la libertad creativa de los diseñadores de juegos.</p>
+      <p><strong>Conclusión:</strong> La inteligencia artificial está estableciendo un nuevo horizonte en el mundo del gaming, ofreciendo experiencias más personalizadas, inmersivas y emocionantes. A medida que esta tecnología continúa desarrollándose, su potencial para transformar todos los aspectos del diseño y la experiencia de juego solo seguirá creciendo, marcando el comienzo de una era completamente nueva en el entretenimiento interactivo.</p>
+      <p>CDETECH. (2024, mayo 28). El futuro del gaming: Inteligencia artificial y la personalización de experiencias.</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="comments-section" id="comments-home">
+  <h2>Comentarios</h2>
+  <ul class="chat" id="home-chat"></ul>
+  <p class="comments-empty" id="home-empty" hidden>Aún no hay comentarios. ¡Sé el primero en comentar!</p>
+  <form class="comment-form" id="home-form">
+    <input type="text" id="home-name" class="name" placeholder="Tu nombre" required>
+    <input type="text" id="home-text" placeholder="Escribe un mensaje..." required>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+</div>
+
+<!-- Nuestro equipo -->
+<section class="team" id="equipo">
+  <h2>Nuestro Equipo</h2>
+  <div class="team-grid">
+    <div class="member reveal tilt">
+      <img src="img/Kevin Aguilar.jpg" alt="Kevin Aguilar">
+      <h3>Kevin Omar Aguilar García</h3>
+      <p>Diseño e Identidad del blog</p>
+    </div>
+    <div class="member reveal tilt">
+      <img src="img/Steven Madrid.jpg" alt="Steven Madrid">
+      <h3>Steven Alexander Madrid Rodriguez</h3>
+      <p>Contenido e información</p>
+    </div>
+    <div class="member reveal tilt">
+      <img src="img/Humberto Flores.jpg" alt="Humberto Madrid">
+      <h3>Humberto Antonio Madrid Flores</h3>
+      <p>Apoyo general y coordinación</p>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  &copy; 2025 Pixel Pulse • Diseñado con pasión por los videojuegos
+</div>
+ </div>
+ <!-- FIN DEL CÓDIGO --> 
+
+<div class="img-modal" id="img-modal" hidden>
+  <img alt="zoom" src="" />
+</div>
+<div class="post-modal" id="post-modal" hidden>
+  <div class="post-modal-box">
+    <button class="post-close" aria-label="Cerrar">×</button>
+    <div class="post-modal-content" id="post-modal-content"></div>
+  </div>
+  
+</div>
+<audio id="ui-sfx" src="media/ui-sound.mp3" preload="auto"></audio>
+<script>
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)){
+      els.forEach(el=>el.classList.add('show'));
+      return;
+    }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});
+    },{threshold:0.2});
+    els.forEach(el=>io.observe(el));
+  })();
+
+  (function(){
+    const root = document.querySelector('#top-juegos');
+    if(!root) return;
+    const track = root.querySelector('.carousel-track');
+    const slides = Array.from(root.querySelectorAll('.slide'));
+    const prev = root.querySelector('.c-btn.prev');
+    const next = root.querySelector('.c-btn.next');
+    const sfx = document.getElementById('ui-sfx');
+    const play = ()=>{ if(sfx){ const a = sfx.cloneNode(); a.volume = sfx.volume; a.play().catch(()=>{}); } };
+    let index = 0; let timer = null;
+    const set = (i)=>{ index = (i+slides.length)%slides.length; track.style.transform = `translateX(-${index*100}%)`; };
+    const go = (d)=>{ set(index + d); play(); };
+    prev.addEventListener('click', ()=>go(-1));
+    next.addEventListener('click', ()=>go(1));
+    const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const start = ()=>{ if(prefersReduce) return; stop(); timer = setInterval(()=>set(index+1), 4000); };
+    const stop = ()=>{ if(timer) clearInterval(timer); timer = null; };
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    start();
+  })();
+
+  (function(){
+    const maxTilt = 8; // grados
+    const cards = document.querySelectorAll('.member.tilt');
+    cards.forEach(card=>{
+      let rafId = null;
+      const onMove = (ev)=>{
+        const rect = card.getBoundingClientRect();
+        const x = (ev.clientX - rect.left) / rect.width; // 0..1
+        const y = (ev.clientY - rect.top) / rect.height; // 0..1
+        const rotY = (x - 0.5) * (maxTilt * 2);
+        const rotX = (0.5 - y) * (maxTilt * 2);
+        if(rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(()=>{
+          card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        });
+      };
+      const onLeave = ()=>{
+        card.style.transition = 'transform .3s ease';
+        card.style.transform = 'none';
+        setTimeout(()=>{card.style.transition='';},320);
+      };
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', onLeave);
+    });
+  })();
+
+  const mq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq && mq.matches){
+    document.querySelectorAll('.member.tilt').forEach(el=>{
+      el.removeEventListener('mousemove', ()=>{});
+      el.removeEventListener('mouseleave', ()=>{});
+      el.style.transform = 'none';
+    });
+  }
+  (function(){
+    const el = document.getElementById('ui-sfx');
+    if(!el) return;
+    el.volume = 0.45;
+    const play = ()=>{ const a = el.cloneNode(); a.volume = el.volume; a.play().catch(()=>{}); };
+    document.addEventListener('pointerdown', (e)=>{
+      if (e.target.closest('.member') || e.target.closest('.post') || e.target.closest('.post a') || e.target.closest('.member img')){
+        play();
+      }
+    }, {passive:true});
+    document.addEventListener('keydown', (e)=>{
+      if ((e.key === 'Enter' || e.key === ' ') && (e.target.closest('.member') || e.target.closest('.post') || e.target.closest('a'))){
+        play();
+      }
+    });
+  })();
+
+  (function(){
+    const modal = document.getElementById('img-modal');
+    if(!modal) return;
+    const imgEl = modal.querySelector('img');
+    const sfx = document.getElementById('ui-sfx');
+    const pinned = document.getElementById('top-juegos');
+    const vr = document.getElementById('vr-box');
+    const play = ()=>{ if(sfx){ const a = sfx.cloneNode(); a.volume = sfx.volume; a.play().catch(()=>{}); } };
+    const open = (src, alt)=>{ if(pinned) pinned.classList.add('hidden'); if(vr) vr.classList.add('hidden'); imgEl.src = src; imgEl.alt = alt || ''; modal.hidden = false; requestAnimationFrame(()=>modal.classList.add('open')); play(); };
+    const close = ()=>{ modal.classList.remove('open'); play(); setTimeout(()=>{ modal.hidden = true; imgEl.src=''; if(pinned) pinned.classList.remove('hidden'); if(vr) vr.classList.remove('hidden'); }, 200); };
+    document.addEventListener('click', (e)=>{
+      const t = e.target;
+      if (t && t.matches('.member img')){
+        e.preventDefault();
+        open(t.getAttribute('src'), t.getAttribute('alt'));
+      }
+    });
+    modal.addEventListener('click', (e)=>{ if(e.target === modal || e.target === imgEl){ close(); } });
+    document.addEventListener('keydown',(e)=>{ if(e.key === 'Escape' && !modal.hidden){ close(); } });
+  })();
+
+  (function(){
+    const modal = document.getElementById('post-modal');
+    if(!modal) return;
+    const box = modal.querySelector('.post-modal-box');
+    const content = document.getElementById('post-modal-content');
+    const closeBtn = modal.querySelector('.post-close');
+    const sfx = document.getElementById('ui-sfx');
+    const pinned = document.getElementById('top-juegos');
+    const vr = document.getElementById('vr-box');
+    const play = ()=>{ if(sfx){ const a = sfx.cloneNode(); a.volume = sfx.volume; a.play().catch(()=>{}); } };
+    const open = (html, postKey)=>{ if(pinned) pinned.classList.add('hidden'); if(vr) vr.classList.add('hidden'); content.innerHTML = html + `
+    <section class=\"comments-section\" id=\"comments-post\">\n     <h2>Comentarios</h2>\n     <ul class=\"chat\" id=\"post-chat\"></ul>\n     <p class=\"comments-empty\" id=\"post-empty\" hidden>Aún no hay comentarios. ¡Sé el primero en comentar!</p>\n     <form class=\"comment-form\" id=\"post-form\">\n       <input type=\\\"text\\\" id=\\\"post-name\\\" class=\\\"name\\\" placeholder=\\\"Tu nombre\\\" required>\n       <input type=\\\"text\\\" id=\\\"post-text\\\" placeholder=\\\"Escribe un mensaje...\\\" required>\n       <button type=\\\"submit\\\">Enviar</button>\n     </form>\n   </section>`; modal.hidden = false; requestAnimationFrame(()=>{ modal.classList.add('open'); renderChat('post', 'comments:post:'+postKey); }); play(); };
+    const close = ()=>{ modal.classList.remove('open'); play(); setTimeout(()=>{ modal.hidden = true; content.innerHTML=''; if(pinned) pinned.classList.remove('hidden'); if(vr) vr.classList.remove('hidden'); }, 200); };
+    document.addEventListener('click',(e)=>{
+      const link = e.target.closest('.post a');
+      if(!link) return;
+      e.preventDefault();
+      const post = link.closest('.post');
+      const titleEl = post.querySelector('h3');
+      const title = titleEl?.outerHTML || '';
+      const img = post.querySelector('img')?.outerHTML || '';
+      const text = post.querySelector('p')?.outerHTML || '';
+      const extraNode = post.querySelector('.post-extra');
+      const extra = extraNode ? extraNode.innerHTML : '';
+      const key = slugify(titleEl?.textContent || 'post');
+      open(`${img}<div class=\"pm-wrap\" style=\"padding:16px 16px 4px 16px\">${title}${text}<div class=\"pm-extra\">${extra}</div></div>`, key);
+    });
+    modal.addEventListener('click',(e)=>{ if(e.target === modal){ close(); } });
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown',(e)=>{ if(e.key==='Escape' && !modal.hidden){ close(); } });
+  })();
+  // Utilidades para comentarios
+  function slugify(s){
+    try{
+      return (s||'').toString().toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+        .replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+    }catch(e){
+      // Fallback en navegadores sin normalize
+      return (s||'').toString().toLowerCase()
+        .replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+    }
+  }
+  function readComments(key){
+    try{ return JSON.parse(localStorage.getItem(key)||'[]'); }catch{ return []; }
+  }
+  function writeComments(key, arr){
+    try{ localStorage.setItem(key, JSON.stringify(arr)); }catch{}
+  }
+  function getMeName(){ return localStorage.getItem('comments:meName')||''; }
+  function setMeName(n){ try{ localStorage.setItem('comments:meName', n||''); }catch{} }
+  function renderChat(prefix, storageKey){
+    const list = document.getElementById(prefix+'-chat');
+    const empty = document.getElementById(prefix+'-empty');
+    const form = document.getElementById(prefix+'-form');
+    const nameInput = document.getElementById(prefix+'-name');
+    const textInput = document.getElementById(prefix+'-text');
+    if(!list || !form || !nameInput || !textInput) return;
+    nameInput.value = getMeName();
+    const render = ()=>{
+      const me = getMeName();
+      const data = readComments(storageKey);
+      list.innerHTML='';
+      if (!data.length && empty) empty.hidden = false; else if (empty) empty.hidden = true;
+      data.forEach((m)=>{
+        const li = document.createElement('li');
+        li.className = 'msg'+(me && m.name && m.name.toLowerCase()===me.toLowerCase() ? ' me' : '');
+        const av = document.createElement('div'); av.className='avatar'; av.textContent=(m.name||'?').trim().charAt(0).toUpperCase();
+        const b = document.createElement('div'); b.className='bubble';
+        b.innerHTML = `<strong>${m.name||'Anónimo'}</strong><br>${(m.text||'')}`;
+        const meta = document.createElement('span'); meta.className='meta';
+        const d = new Date(m.time||Date.now()); meta.textContent = d.toLocaleString();
+        b.appendChild(meta);
+        li.appendChild(av); li.appendChild(b);
+        list.appendChild(li);
+      });
+      list.scrollTop = list.scrollHeight;
+    };
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = nameInput.value.trim() || 'Anónimo';
+      const text = textInput.value.trim();
+      if(!text) return;
+      setMeName(name);
+      const arr = readComments(storageKey);
+      arr.push({name, text, time: Date.now()});
+      writeComments(storageKey, arr);
+      textInput.value='';
+      render();
+    });
+    render();
+  }
+
+  // Inicializar comentarios de la página principal
+  renderChat('home', 'comments:home');
+
+  // --- Votos por entrada (like/dislike) ---
+  function readVotes(key){
+    try{ return JSON.parse(localStorage.getItem(key)||'{"like":0,"dislike":0}'); }catch{ return {like:0,dislike:0}; }
+  }
+  function writeVotes(key, obj){
+    try{ localStorage.setItem(key, JSON.stringify(obj)); }catch{}
+  }
+  function readUserVote(key){ return localStorage.getItem('votes:user:'+key) || ''; }
+  function writeUserVote(key, val){ try{ if(val){ localStorage.setItem('votes:user:'+key, val); } else { localStorage.removeItem('votes:user:'+key); } }catch{} }
+  function buildVotesUI(postEl, key){
+    if(postEl.querySelector('.votes')) return;
+    const bar = document.createElement('div');
+    bar.className = 'votes';
+    const likeBtn = document.createElement('button'); likeBtn.type='button'; likeBtn.className='vote-btn like'; likeBtn.innerHTML = '<span class="icon">👍</span><span class="vote-count" data-count="like">0</span>';
+    const dislikeBtn = document.createElement('button'); dislikeBtn.type='button'; dislikeBtn.className='vote-btn dislike'; dislikeBtn.innerHTML = '<span class="icon">👎</span><span class="vote-count" data-count="dislike">0</span>';
+    bar.appendChild(likeBtn); bar.appendChild(dislikeBtn);
+    postEl.appendChild(bar);
+    const render = ()=>{
+      const data = readVotes('votes:post:'+key);
+      const user = readUserVote(key);
+      bar.querySelector('[data-count="like"]').textContent = data.like||0;
+      bar.querySelector('[data-count="dislike"]').textContent = data.dislike||0;
+      likeBtn.classList.toggle('active', user==='like'); likeBtn.classList.toggle('like', true);
+      dislikeBtn.classList.toggle('active', user==='dislike'); dislikeBtn.classList.toggle('dislike', true);
+    };
+    const vote = (type)=>{
+      const k = 'votes:post:'+key;
+      const data = readVotes(k);
+      const current = readUserVote(key);
+      if(current === type){
+        // quitar voto
+        if(type==='like' && data.like>0) data.like--; if(type==='dislike' && data.dislike>0) data.dislike--;
+        writeVotes(k, data); writeUserVote(key, ''); render(); return;
+      }
+      // cambiar o asignar voto
+      if(current==='like' && data.like>0) data.like--; if(current==='dislike' && data.dislike>0) data.dislike--;
+      if(type==='like') data.like = (data.like||0)+1; else data.dislike = (data.dislike||0)+1;
+      writeVotes(k, data); writeUserVote(key, type); render();
+    };
+    likeBtn.addEventListener('click', (ev)=>{ ev.preventDefault(); ev.stopPropagation(); vote('like'); });
+    dislikeBtn.addEventListener('click', (ev)=>{ ev.preventDefault(); ev.stopPropagation(); vote('dislike'); });
+    render();
+  }
+  function initVotes(){
+    document.querySelectorAll('.post').forEach(post=>{
+      const titleEl = post.querySelector('h3');
+      const key = slugify(titleEl?.textContent || 'post');
+      buildVotesUI(post, key);
+    });
+  }
+  initVotes();
+</script>
+
+</body>
+</html>
