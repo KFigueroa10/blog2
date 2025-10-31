@@ -4,5 +4,13 @@
       "source": "/(.*)",
       "destination": "/blog/$1"
     }
-  ]
+  ],
+  "github": {
+    "enabled": true
+  },
+  "build": {
+    "env": {
+      "GIT_LFS_ENABLED": "1"
+    }
+  }
 }
